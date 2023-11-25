@@ -67,6 +67,18 @@ function getHeight(rootNode) {
     return Math.max(leftSide, rightSide) + 1;
 }
 
+/** getHeight Solution 2 **/
+/*
+function getHeight (rootNode) {
+    // Your code here
+    if (!rootNode) return -1;
+    let leftSide = getHeight(rootNode.left);
+    let rightSide = getHeight(rootNode.right);
+    
+    return Math.max(leftSide, rightSide) + 1;
+}
+*/
+
 function balancedTree(rootNode) {
     // Your code here
     // return ((leftHeight - rightHeight >= 0 && leftHeight - rightHeight <= 1) || (rightHeight - leftHeight >= 0 && rightHeight - leftHeight <= 1));
@@ -79,6 +91,18 @@ function balancedTree(rootNode) {
     };
 	return balancedTree(rootNode.left) && balancedTree(rootNode.right)
 }
+/** balancedTree SOLUTION 2 **/
+/*
+function balancedTree (rootNode) {
+    // Your code here
+    if (!rootNode) return true;
+    let leftHeight = getHeight(rootNode.left);
+    let rightHeight = getHeight(rootNode.right);
+
+    if (Math.abs(leftHeight - rightHeight) <= 1 && balancedTree(rootNode.left) && balancedTree(rootNode.right)) return true;
+    return false;
+}
+*/
 
 function countNodes(rootNode) {
     // Your code here
@@ -90,6 +114,18 @@ function countNodes(rootNode) {
     count += (leftCount + rightCount) + 1;
     return count;
 }
+
+/** countNodes SOLUTION @ **/
+/*
+function countNodes (rootNode) {
+    // Your code here
+    if (!rootNode) return 0;
+    let leftSide = countNodes(rootNode.left);
+    let rightSide = countNodes(rootNode.right);
+
+    return leftSide + rightSide + 1;
+}
+*/
 
 function getParentNode(rootNode, target) {
     // Your code here
@@ -113,6 +149,24 @@ function getParentNode(rootNode, target) {
     }
     return undefined;
 }
+
+/** getParentNode SOLUTION 2 **/
+/*
+function getParentNode (rootNode, target) {
+    // Your code here
+    function findParent(node, parent) {
+	if (!node) return null;
+	if (node.val === target) return parent;
+
+	let leftSide = null; rightSide = null;
+	if (node.left) leftSide = findParent(node.left, node);
+	if (node.right) rightSide = findParent(node.right, node);
+
+	return leftSide || rightSide || undefined;
+    }
+    return findParent(rootNode, null);
+}
+*/
 
 function inOrderPredecessor(rootNode, target) {
     // Your code here
