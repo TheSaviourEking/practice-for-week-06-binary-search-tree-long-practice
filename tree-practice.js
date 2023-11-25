@@ -205,6 +205,49 @@ function countChildren(node) {
     if (node.left && node.right) return 2;
 }
 
+/** SOLUTION 2 **/
+/*
+function deleteNodeBST(rootNode, target) {
+  // Do a traversal to find the node. Keep track of the parent
+  let parent = getParentNode(rootNode, target);
+  let node;
+
+  // Undefined if the target cannot be found
+
+  // Set target based on parent
+  parent? node = (parent.left && parent.left.val === target ? parent.left : parent.right) || undefined : node = rootNode;
+
+  // Case 0: Zero children and no parent:
+  //   return null
+  
+  // Case 1: Zero children:
+  //   Set the parent that points to it to null
+      if (!node.left && !node.right) {
+	parent.left === node ? parent.left = null : parent.right = null;
+    }
+
+  // Case 3: One child:
+  //   Make the parent point to the child
+  else if (node.left === null || node.right === null) {
+  let nodeChild = node.left || node.right;
+	parent.left === node ? parent.left = nodeChild : parent.right = nodeChild;
+    }
+
+  // Case 2: Two children:
+  //  Set the value to its in-order predecessor, then delete the predecessor
+  //  Replace target node with the left most child on its right side, 
+  //  or the right most child on its left side.
+  //  Then delete the child that it was replaced with.
+   else {
+	let predecessor = inOrderPredecessor(rootNode, target);
+	//node.val = predecessor;
+	deleteNodeBST(node, predecessor);
+	node.val = predecessor;
+    }
+
+}
+*/
+
 module.exports = {
     findMinBST,
     findMaxBST,
