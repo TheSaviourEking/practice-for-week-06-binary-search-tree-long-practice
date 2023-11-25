@@ -130,6 +130,24 @@ function inOrderPredecessor(rootNode, target) {
     return result[0] === target ? null : res;
 }
 
+/** inOrderPredecessor solution 2 **/
+/*
+function inOrderPredecessor (rootNode, target) {
+    // Your code here
+    if (!rootNode) return null;
+    let predecessor = null;
+    while (rootNode !== null) {
+	if (target > rootNode.val) {
+	    predecessor = rootNode;
+	    rootNode = rootNode.right;
+	} else {
+	    rootNode = rootNode.left;
+	}
+    }
+    return predecessor? predecessor.val : null;
+}
+*/
+
 // function deleteNodeBST(rootNode, target) {
 //     // Do a traversal to find the node. Keep track of the parent
 
